@@ -312,7 +312,8 @@ def build(compact, active, output=FIG):
         + ("" if active else "-still")
         + ".svg"
     )
-    ET.ElementTree(svg).write(file, encoding="utf-8", xml_declaration=False)
+    with file.open("w", encoding="utf-8", newline="\n") as stream:
+        ET.ElementTree(svg).write(stream, encoding="unicode")
 
 
 if __name__ == "__main__":
